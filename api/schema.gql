@@ -1,0 +1,19 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""project"""
+type Project {
+  id: ID!
+  title: String!
+  creationDate: Date!
+  releaseDate: Date!
+  description: String
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type Query {
+  project(id: String!): Project!
+}
