@@ -15,5 +15,5 @@ type Project {
 scalar Date
 
 type Query {
-  project(id: String!): Project!
+  project(id: Float!): Project
 }

@@ -1,12 +1,13 @@
 import { Resolver, Query, Args } from '@nestjs/graphql';
 import { Project } from './models/project.model';
+import { ProjectsService } from './projects.service';
 
 @Resolver(() => Project)
 export class ProjectsResolver {
-  @Query(() => Project)
-  async project(@Args('id') id: string): Promise<Project> {
-    console.log(id);
+  constructor(private readonly projectsService: ProjectsService) {}
 
-    return new Project();
+  @Query(() => Project, { nullable: true })
+  async project(@Args('id') id: number): Promise<Project | null> {
+    return this.projectsService.project({ id });
   }
 }
