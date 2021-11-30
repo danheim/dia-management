@@ -3,7 +3,7 @@ import styles from './Home.module.css';
 import { useProjects } from '../../controllers/projects/projects.hooks/useProjects';
 
 export const Home: FC = () => {
-  const projects = useProjects();
+  const [projects] = useProjects();
 
   return (
     <div className={styles.container}>

@@ -49,5 +49,12 @@ module.exports = {
     ],
     'react/jsx-props-no-spreading': 0,
     'import/prefer-default-export': 0,
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
+    'no-empty-function': 0,
+    'no-useless-constructor': 0,
+    'class-methods-use-this': 0,
   },
 };

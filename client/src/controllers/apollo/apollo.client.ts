@@ -1,16 +1,59 @@
 import {
-  ApolloClient,
-  InMemoryCache,
+  ApolloClient, ApolloLink, createHttpLink, InMemoryCache,
 } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+import { onError } from '@apollo/client/link/error';
+import { useLogger } from '../logger/logger.hooks/useLogger';
 
 // TODO: Make it better
-const getApiLink = () => 'http://localhost:3000/graphql';
+const getApiLink = () => 'http://localhost:4000/graphql';
 
 export const initApolloClient = () => {
-  const client = new ApolloClient({
-    uri: getApiLink(),
-    cache: new InMemoryCache(),
+  const logger = useLogger({
+    name: 'Apollo Client',
   });
 
-  return client;
+  const httpLink = createHttpLink({
+    uri: getApiLink(),
+  });
+
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors) {
+      graphQLErrors.forEach(({ message, path }) => {
+        logger.error('[GRAPHQL ERROR]', {
+          message,
+          path,
+        });
+      });
+    }
+
+    if (networkError) {
+      logger.error('[NETWORK ERROR]', {
+        Message: networkError.message,
+        Stack: networkError.stack,
+      });
+    }
+  });
+
+  const authLink = setContext((_, { headers }) => {
+    const token = localStorage.getItem('token');
+
+    return {
+      headers: {
+        ...headers,
+        authorization: token ? `Bearer ${token}` : '',
+      },
+    };
+  });
+
+  const apiLink = ApolloLink.from([
+    errorLink,
+    authLink,
+    httpLink,
+  ]);
+
+  return new ApolloClient({
+    link: apiLink,
+    cache: new InMemoryCache(),
+  });
 };
