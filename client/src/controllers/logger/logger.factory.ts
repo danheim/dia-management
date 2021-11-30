@@ -1,5 +1,5 @@
-import { ConsoleLogger } from './logger.clients/consoleLogger.client';
-import { LoggerOptions, LoggerTypes } from './logger.typedefs';
+import { ConsoleLogger } from '@/controllers/logger/logger.clients/consoleLogger.client';
+import { LoggerOptions, LoggerTypes } from '@/controllers/logger/logger.typedefs';
 
 type Loggers = {
   [key in LoggerTypes]: typeof ConsoleLogger | null;

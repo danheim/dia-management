@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useProjects } from '../../controllers/projects/projects.hooks/useProjects';
+import { useProjects } from '@/controllers/projects/projects.hooks/useProjects';
 
 export const DashboardModule: FC = () => {
   const [projects] = useProjects();

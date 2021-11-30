@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import styles from './Home.module.css';
+import styles from '@/components/HomePage/Home.module.css';
 
 export const Home: FC = () => (
   <div className={styles.container}>

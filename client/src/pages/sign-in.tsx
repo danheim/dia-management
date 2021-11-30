@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { SignInModule } from '../components/SignIn';
+import { SignInModule } from '@/components/SignIn';
 
 const SignInPage: NextPage = () => (
   <SignInModule />

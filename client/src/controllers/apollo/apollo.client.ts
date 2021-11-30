@@ -3,7 +3,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
-import { useLogger } from '../logger/logger.hooks/useLogger';
+import { useLogger } from '@/controllers/logger/logger.hooks/useLogger';
 
 // TODO: Make it better
 const getApiLink = () => 'http://localhost:4000/graphql';

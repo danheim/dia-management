@@ -1,9 +1,7 @@
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import {
-  ApolloProvider,
-} from '@apollo/client';
-import { initApolloClient } from '../controllers/apollo/apollo.client';
+import { ApolloProvider } from '@apollo/client';
+import { initApolloClient } from '@/controllers/apollo/apollo.client';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const client = initApolloClient();

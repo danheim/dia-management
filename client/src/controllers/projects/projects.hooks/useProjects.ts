@@ -1,7 +1,7 @@
 import { QueryResult, useQuery } from '@apollo/client';
 import { useMemo } from 'react';
-import { Project } from '../projects.typedefs';
-import { PROJECTS_QUERY } from '../projects.queries/projects.query';
+import { Project } from '@/controllers/projects/projects.typedefs';
+import { PROJECTS_QUERY } from '@/controllers/projects/projects.queries/projects.query';
 
 type ProjectsData = {
   projects: Project[];

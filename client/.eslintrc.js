@@ -1,3 +1,12 @@
+const path = require('path');
+
+const resolve = {
+  extensions: ['.js', '.jsx', '.json', '.ts', '.tsx', '.svg'],
+  alias: {
+    '@': path.resolve(__dirname, 'src'),
+  },
+};
+
 module.exports = {
   env: {
     browser: true,
@@ -22,8 +31,14 @@ module.exports = {
   ],
   settings: {
     'import/resolver': {
+      alias: {
+        map: [
+          ...Object.entries(resolve.alias),
+        ],
+        extensions: resolve.extensions,
+      },
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: resolve.extensions,
       },
     },
   },
