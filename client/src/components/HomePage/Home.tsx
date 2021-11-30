@@ -1,22 +1,20 @@
 import { FC } from 'react';
+import Link from 'next/link';
 import styles from './Home.module.css';
-import { useProjects } from '../../controllers/projects/projects.hooks/useProjects';
 
-export const Home: FC = () => {
-  const [projects] = useProjects();
+export const Home: FC = () => (
+  <div className={styles.container}>
 
-  return (
-    <div className={styles.container}>
-      Hello world
+    <h2 className="title">
+      <Link href="/sign-in">
+        <a href="https://nextjs.org">Sign in</a>
+      </Link>
+    </h2>
 
-      <ul>
-        {projects.length > 0 && projects.map((project) => (
-          <li key={project.id}>
-            <div>{project.title}</div>
-            <div>{project.description}</div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    <h2 className="title">
+      <Link href="/dashboard">
+        <a href="https://nextjs.org">Dashboard!</a>
+      </Link>
+    </h2>
+  </div>
+);
