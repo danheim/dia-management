@@ -9,11 +9,14 @@ export class Project {
   title: string;
 
   @Field()
+  description: string;
+
+  @Field({ nullable: true })
+  startDate?: Date;
+
+  @Field()
   creationDate: Date;
 
   @Field()
   releaseDate: Date;
-
-  @Field({ nullable: true })
-  description?: string;
 }

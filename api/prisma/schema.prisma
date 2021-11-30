@@ -13,7 +13,8 @@ datasource db {
 model Projects {
   id            Int      @default(autoincrement()) @id
   title         String
-  description   String?
+  description   String
+  startDate     DateTime?
   creationDate  DateTime @default(now())
   releaseDate   DateTime @default(now())
 }
