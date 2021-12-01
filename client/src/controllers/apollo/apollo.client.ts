@@ -1,20 +1,22 @@
 import {
   ApolloClient, ApolloLink, createHttpLink, InMemoryCache,
 } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
+import { IncomingHttpHeaders } from 'http';
 import { useLogger } from '@/controllers/logger/logger.hooks/useLogger';
 
 // TODO: Make it better
 const getApiLink = () => 'http://localhost:4000/graphql';
 
-export const initApolloClient = () => {
+export const initApolloClient = (headers?: IncomingHttpHeaders) => {
   const logger = useLogger({
     name: 'Apollo Client',
   });
 
   const httpLink = createHttpLink({
     uri: getApiLink(),
+    credentials: 'include',
+    headers,
   });
 
   const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -35,20 +37,8 @@ export const initApolloClient = () => {
     }
   });
 
-  const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem('token');
-
-    return {
-      headers: {
-        ...headers,
-        authorization: token ? `Bearer ${token}` : '',
-      },
-    };
-  });
-
   const apiLink = ApolloLink.from([
     errorLink,
-    authLink,
     httpLink,
   ]);
 

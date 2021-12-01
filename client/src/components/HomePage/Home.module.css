@@ -1,3 +1,13 @@
 .container {
-  padding: 2rem;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: bold;
 }

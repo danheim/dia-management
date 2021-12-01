@@ -5,11 +5,11 @@ import { SIGN_IN_MUTATION } from '@/controllers/users/users.queries/signIn.mutat
 import { User } from '@/controllers/users/users.typedefs';
 import { Routes } from '@/controllers/router/router.constants';
 
-type SignInData = {
+export type SignInData = {
   signIn: User & { access_token: string };
 }
 
-type SignInVariables = {
+export type SignInVariables = {
   username: string;
   password: string;
 }
@@ -33,7 +33,6 @@ export const useSignIn: UseSignIn = () => {
     });
 
     if (data?.signIn) {
-      localStorage.setItem('token', data.signIn.access_token);
       router.push(Routes.Dashboard);
     }
   }, [mutate]);

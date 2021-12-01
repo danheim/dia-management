@@ -13,6 +13,11 @@ import { UsersModule } from './users/users.module';
       autoSchemaFile: 'schema.gql',
       debug: process.env.NODE_ENV === 'development',
       playground: process.env.NODE_ENV === 'development',
+      cors: {
+        credentials: true,
+        origin: true,
+      },
+      context: ({ req, res }) => ({ req, res }),
     }),
     AuthModule,
     ProjectsModule,

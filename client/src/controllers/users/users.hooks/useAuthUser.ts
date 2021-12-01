@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { AUTH_USER_QUERY } from '@/controllers/users/users.queries/authUser.query';
 import { User } from '@/controllers/users/users.typedefs';
 
-type AuthUserData = {
+export type AuthUserData = {
   authUser: User;
 }
 

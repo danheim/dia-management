@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { User } from '../users/users.models/User.model';
 import { AuthService } from './auth.service';
 import { NotFoundException, UseGuards } from '@nestjs/common';
@@ -21,6 +21,7 @@ export class AuthResolver {
 
   @Mutation(() => User)
   async signIn(
+    @Context() ctx: any,
     @Args({ name: 'username', type: () => String }) username: string,
     @Args({ name: 'password', type: () => String }) password: string,
   ) {
@@ -30,6 +31,10 @@ export class AuthResolver {
       throw new NotFoundException();
     }
 
-    return this.authService.signIn(user);
+    const authUser = await this.authService.signIn(user);
+
+    ctx.res.cookie('token', authUser.access_token);
+
+    return authUser;
   }
 }
