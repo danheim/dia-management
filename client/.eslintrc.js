@@ -71,5 +71,6 @@ module.exports = {
     'no-empty-function': 0,
     'no-useless-constructor': 0,
     'class-methods-use-this': 0,
+    'jsx-a11y/label-has-associated-control': 0,
   },
 };
