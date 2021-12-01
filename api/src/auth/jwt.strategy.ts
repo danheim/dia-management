@@ -8,7 +8,9 @@ import { Request } from 'express';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
     super({
-      jwtFromRequest: (req: Request) => req.cookies.token,
+      jwtFromRequest: (req: Request) => {
+        return req.cookies.token || req.headers['authorization'];
+      },
       ignoreExpiration: false,
       secretOrKey: JWT_CONSTANTS.secret,
     });

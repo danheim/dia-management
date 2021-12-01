@@ -7,17 +7,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Projects {
-  id           Int       @id @default(autoincrement())
-  title        String
-  description  String
-  creationDate DateTime  @default(now())
-  releaseDate  DateTime  @default(now())
-  startDate    DateTime?
-}
-
 model Users {
   id       Int    @id @default(autoincrement())
   username String
   password String
+}
+
+model Projects {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  startDate   DateTime
+  tasks       Tasks[]
+}
+
+model Tasks {
+  id          Int      @id @default(autoincrement())
+  title       String
+  startDate   DateTime
+  releaseDate DateTime
+  project     Projects @relation(fields: [projectId], references: [id])
+  projectId   Int
 }

@@ -2,18 +2,26 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""task"""
+type Task {
+  id: ID!
+  title: String!
+  startDate: Date!
+  releaseDate: Date!
+  projectId: Float!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
 """project"""
 type Project {
   id: ID!
   title: String!
   description: String!
-  startDate: Date
-  creationDate: Date!
-  releaseDate: Date!
+  startDate: Date!
+  tasks: [Task!]!
 }
-
-"""Date custom scalar type"""
-scalar Date
 
 """user"""
 type User {
@@ -36,4 +44,5 @@ type Mutation {
 input NewProjectInput {
   title: String!
   description: String!
+  startDate: Date!
 }

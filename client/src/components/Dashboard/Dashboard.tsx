@@ -4,6 +4,8 @@ import { useProjects } from '@/controllers/projects/projects.hooks/useProjects';
 export const DashboardModule: FC = () => {
   const [projects] = useProjects();
 
+  console.log(projects);
+
   return (
     <div>
       <h2>Projects</h2>

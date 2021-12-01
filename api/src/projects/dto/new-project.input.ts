@@ -1,5 +1,5 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { Length, MaxLength } from 'class-validator';
+import { Length, MaxLength, IsDate } from 'class-validator';
 
 @InputType()
 export class NewProjectInput {
@@ -10,4 +10,8 @@ export class NewProjectInput {
   @Field()
   @Length(15, 255)
   description: string;
+
+  @Field()
+  @IsDate()
+  startDate: Date;
 }

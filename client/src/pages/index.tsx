@@ -1,13 +1,10 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { Home } from '@/components/HomePage';
 import { initApolloClient } from '@/controllers/apollo/apollo.client';
 import { AUTH_USER_QUERY } from '@/controllers/users/users.queries/authUser.query';
 import { AuthUserData } from '@/controllers/users/users.hooks/useAuthUser';
 import { Routes } from '@/controllers/router/router.constants';
 
-const HomePage: NextPage = () => (
-  <Home />
-);
+const HomePage: NextPage = () => null;
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const apolloClient = initApolloClient(ctx.req.headers);
