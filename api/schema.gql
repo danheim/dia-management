@@ -15,12 +15,21 @@ type Project {
 """Date custom scalar type"""
 scalar Date
 
+"""user"""
+type User {
+  id: ID!
+  username: String!
+  password: String
+  access_token: String
+}
+
 type Query {
-  project(id: Float!): Project
+  authUser: User
   projects: [Project!]!
 }
 
 type Mutation {
+  signIn(password: String!, username: String!): User!
   addProject(newProjectData: NewProjectInput!): Project!
 }
 
