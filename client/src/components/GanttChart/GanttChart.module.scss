@@ -1,0 +1,28 @@
+.container {
+  border: 1px solid #eee;
+}
+
+.projectTitleContainer {
+  display: flex;
+  font-size: 18px;
+  gap: 4px;
+  padding-left: 8px;
+}
+
+.taskTitleContainer {
+  display: flex;
+  font-size: 16px;
+  gap: 4px;
+  padding-left: 20px;
+}
+
+.item {
+  padding: 8px 0;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #eee;
+
+  &:last-child {
+    border: unset;
+  }
+}

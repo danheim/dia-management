@@ -22,10 +22,11 @@ model Projects {
 }
 
 model Tasks {
-  id          Int      @id @default(autoincrement())
-  title       String
-  startDate   DateTime
-  releaseDate DateTime
-  project     Projects @relation(fields: [projectId], references: [id])
-  projectId   Int
+  id        Int      @id @default(autoincrement())
+  title     String
+  startDate DateTime
+  endDate   DateTime
+  progress  Float
+  project   Projects @relation(fields: [projectId], references: [id])
+  projectId Int
 }

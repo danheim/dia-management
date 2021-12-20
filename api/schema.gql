@@ -7,7 +7,8 @@ type Task {
   id: ID!
   title: String!
   startDate: Date!
-  releaseDate: Date!
+  endDate: Date!
+  progress: Float!
   projectId: Float!
 }
 

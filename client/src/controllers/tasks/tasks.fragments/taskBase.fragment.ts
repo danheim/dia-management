@@ -5,6 +5,7 @@ export const TASK_BASE_FRAGMENT = gql`
     id
     title
     startDate
-    releaseDate
+    endDate
+    progress
   }
 `;

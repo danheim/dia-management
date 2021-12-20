@@ -1,23 +1,19 @@
 import { FC } from 'react';
 import { useProjects } from '@/controllers/projects/projects.hooks/useProjects';
+import { GanttChart } from '@/components/GanttChart';
 
 export const DashboardModule: FC = () => {
   const [projects] = useProjects();
 
-  console.log(projects);
-
   return (
-    <div>
-      <h2>Projects</h2>
+    <div className="columns mt-6">
+      <div className="column is-8 is-offset-2">
+        <h2 className="title">List of projects</h2>
 
-      <ul>
-        {projects.length > 0 && projects.map((project) => (
-          <li key={project.id}>
-            <div>{project.title}</div>
-            <div>{project.description}</div>
-          </li>
-        ))}
-      </ul>
+        {projects.length > 0 && (
+          <GanttChart projects={projects} />
+        )}
+      </div>
     </div>
   );
 };

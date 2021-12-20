@@ -12,7 +12,10 @@ export class Task {
   startDate: Date;
 
   @Field()
-  releaseDate: Date;
+  endDate: Date;
+
+  @Field()
+  progress: number;
 
   @Field()
   projectId: number;
